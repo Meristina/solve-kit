@@ -45,14 +45,14 @@ for headless runs, call `solve_kit.mission.run_mission(problem, approval_fn=auto
 
 ### CLI — scaffold into any project, any agent
 ```bash
-solve init <project> --agent <claude|cursor|copilot|gemini|opencode>
+solve init <project> --agent <claude|codex|cursor|copilot|gemini|opencode>
 solve run "<problem>" --auto-approve      # headless, writes missions/<NNN>/
 solve check                               # health/prereqs
 ```
 `solve init` writes the `/solve.*` command pack into the chosen agent's native format
-(Claude `.claude/commands/`, Cursor `.cursor/commands/`, Copilot `.github/prompts/`,
-Gemini `.gemini/commands/solve/*.toml`, opencode `.opencode/commands/`) — single source
-in `.solve/commands/`, transcoded per agent.
+(Claude `.claude/commands/`, Codex `.codex/prompts/`, Cursor `.cursor/commands/`,
+Copilot `.github/prompts/`, Gemini `.gemini/commands/solve/*.toml`, opencode
+`.opencode/commands/`) — single source in `.solve/commands/`, transcoded per agent.
 
 ## Architecture
 - `solve_kit/` — the OpenAI engine: `commander.py`, `inspector.py`, `mission.py`
