@@ -12,14 +12,14 @@ shared-armory payoff. New soldiers get added one by one.
 from agents import Agent, WebSearchTool
 
 # Shared soldiers reused from the common armory (already built):
-from soldiers.soldier_5_whys import soldier_5_whys
-from soldiers.soldier_brainstorming import soldier_brainstorming
-from soldiers.soldier_qqoqcp import soldier_qqoqcp
+from ..soldiers.soldier_5_whys import soldier_5_whys
+from ..soldiers.soldier_brainstorming import soldier_brainstorming
+from ..soldiers.soldier_qqoqcp import soldier_qqoqcp
 
 # New Phase-2 soldiers (added one per turn):
-from soldiers.soldier_ishikawa import soldier_ishikawa
-from soldiers.soldier_relations_diagram import soldier_relations_diagram
-from soldiers.soldier_mece import soldier_mece
+from ..soldiers.soldier_ishikawa import soldier_ishikawa
+from ..soldiers.soldier_relations_diagram import soldier_relations_diagram
+from ..soldiers.soldier_mece import soldier_mece
 
 OFFICER_2_INSTRUCTIONS = """
 You are OFFICER 2: IDENTIFY ROOT CAUSES. Mission: move from symptoms to validated,

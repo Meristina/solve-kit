@@ -7,3 +7,6 @@ venv/
 
 # OS
 .DS_Store
+
+# Solve-Kit mission outputs (user data)
+missions/

@@ -11,11 +11,11 @@ commander. The shared Pareto is reused from the common armory.
 from agents import Agent, WebSearchTool
 
 # Shared soldier reused from the common armory (already built):
-from soldiers.soldier_pareto import soldier_pareto
+from ..soldiers.soldier_pareto import soldier_pareto
 
 # New Phase-5 soldiers (all built):
-from soldiers.soldier_dashboard import soldier_dashboard
-from soldiers.soldier_check_sheet import soldier_check_sheet
+from ..soldiers.soldier_dashboard import soldier_dashboard
+from ..soldiers.soldier_check_sheet import soldier_check_sheet
 
 OFFICER_5_INSTRUCTIONS = """
 You are OFFICER 5: MONITOR THE EFFECTIVENESS. Mission: once the actions are running
