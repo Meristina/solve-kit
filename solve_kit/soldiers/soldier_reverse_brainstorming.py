@@ -12,7 +12,7 @@ reasoning, not plain generation.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import ELITE
 
 REVERSE_BS_INSTRUCTIONS = """
 You are an ELITE, SHARED reverse-brainstorming soldier. Instead of solving/defining

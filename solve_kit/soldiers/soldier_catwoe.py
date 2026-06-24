@@ -8,7 +8,7 @@ a filled CATWOE table + root definition to Officer 1.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import STANDARD
 
 CATWOE_INSTRUCTIONS = """
 You are a CATWOE soldier. Map the human system around a problem:

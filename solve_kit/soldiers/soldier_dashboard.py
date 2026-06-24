@@ -10,7 +10,7 @@ never invented.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import STANDARD
 
 DASHBOARD_INSTRUCTIONS = """
 You are a SHARED Dashboard soldier (tableau de bord de pilotage). Define a small set

@@ -69,8 +69,12 @@ Copilot `.github/prompts/`, Gemini `.gemini/commands/solve/*.toml`, opencode
 `.opencode/commands/`) — single source in `.solve/commands/`, transcoded per agent.
 
 ## Architecture
-- `solve_kit/` — the OpenAI engine: `commander.py`, `inspector.py`, `mission.py`
-  (the deterministic loop + HITL runner), `officers/` (5), `soldiers/` (24).
+- `solve_kit/` — the engine: `commander.py`, `inspector.py`, `mission.py` (the
+  deterministic loop + HITL runner), `models.py` (grade→model, env-configurable),
+  `officers/` (5), `soldiers/` (24).
+- `solve_cli/` — the `solve` CLI: `cli`, `scaffolder`, `integrations` (6 agent
+  adapters), `runner_bridge`, `sync_payload`, and `payload/` (the bundled mirror).
+- `.solve/` — the toolkit: constitution, templates, the 9 `/solve.*` commands, scripts.
 - `agents/` — the Claude mirror (commander, inspector, 5 officers, 24 soldiers).
 - `skills/` — 25 method procedures (24 methods + `mission-dossier`); also the source
   of the toolkit templates.

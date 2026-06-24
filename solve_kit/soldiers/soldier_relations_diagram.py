@@ -11,7 +11,7 @@ Elite = heavier model (full gpt-5): reasoning over a causal influence network.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import ELITE
 
 RELATIONS_INSTRUCTIONS = """
 You are an ELITE relations-diagram soldier (interrelationship digraph). Given a set

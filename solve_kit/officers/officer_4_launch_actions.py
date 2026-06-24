@@ -8,7 +8,7 @@ launch-ready plan to the commander.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import ELITE
 
 # Phase-4 new soldiers:
 from ..soldiers.soldier_action_plan import soldier_action_plan

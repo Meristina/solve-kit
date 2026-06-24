@@ -11,7 +11,7 @@ self-contained (OpenAI has no SKILL.md loader; the field manual lives here).
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import STANDARD
 
 QQOQCP_INSTRUCTIONS = """
 You are a QQOQCP soldier. Characterize a situation along seven dimensions:

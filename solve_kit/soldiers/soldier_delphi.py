@@ -10,7 +10,7 @@ experts are flagged and factual anchors are web-sourced.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import STANDARD
 
 DELPHI_INSTRUCTIONS = """
 You are a Delphi soldier (Dalkey & Helmer, RAND). When no clean data settles a

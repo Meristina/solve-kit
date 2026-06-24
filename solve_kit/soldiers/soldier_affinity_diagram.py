@@ -9,7 +9,7 @@ themes to Officer 1.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import STANDARD
 
 AFFINITY_INSTRUCTIONS = """
 You are an affinity-diagram (KJ) soldier. Turn a scattered pile of items into a

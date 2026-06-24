@@ -9,7 +9,7 @@ Cells are candidates, not facts; any factual claim is web-sourced or flagged.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import STANDARD
 
 DISCOVERY_MATRIX_INSTRUCTIONS = """
 You are a Discovery Matrix soldier (matrice de découverte, Abraham Moles). Map the

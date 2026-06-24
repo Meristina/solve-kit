@@ -10,7 +10,7 @@ nothing invented.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import STANDARD
 
 ACTION_PLAN_INSTRUCTIONS = """
 You are an Action Plan soldier. Convert a chosen solution into a concrete list of

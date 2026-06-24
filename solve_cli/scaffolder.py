@@ -58,7 +58,7 @@ def check(target: str = ".") -> list:
     try:
         import agents  # noqa: F401  (the openai-agents SDK)
         sdk = True
-    except Exception:
+    except ImportError:
         sdk = False
     checks.append(("openai-agents SDK installed (needed for `solve run`)", sdk, "pip install openai-agents"))
     return checks

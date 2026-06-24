@@ -10,7 +10,7 @@ correct.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import ELITE
 
 PERT_INSTRUCTIONS = """
 You are an ELITE PERT / CPM soldier. Turn a list of actions and dependencies into a

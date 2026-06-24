@@ -11,7 +11,7 @@ is web-sourced or flagged.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import STANDARD
 
 ASIT_INSTRUCTIONS = """
 You are an ASIT soldier (Advanced Systematic Inventive Thinking, TRIZ-derived).
