@@ -10,8 +10,10 @@ Art. VI minimal MECE). `$MISSION` = `$ARGUMENTS` (the mission dir).
 
 ## Do
 1. **Read in**: `$MISSION/dossier.md` (problem, sector, prior facts) — don't re-ask.
-2. **Invoke Officer 1** (`agents/officer-1-define-problem.md`, or adopt its role and
-   load the relevant skills): produce a sharp, scoped, prioritized problem statement
+2. **Delegate to the `officer-1-define-problem` subagent** (via the Agent tool, where
+   available — it then runs on its own grade model, e.g. Opus on Claude Code; if no
+   subagent dispatch is available, adopt the officer's role inline + load its skills):
+   produce a sharp, scoped, prioritized problem statement
    **and a measured baseline** of the current state (reuse the `check-sheet` /
    `dashboard` soldiers for the baseline; `qqoqcp` to pin facts; `pareto` to
    prioritize). Pick only the soldiers this case needs.

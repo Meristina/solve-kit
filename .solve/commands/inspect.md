@@ -11,7 +11,8 @@ argument-hint: "<mission dir, e.g. missions/001-...>"
 ## Do
 1. **Read** all mission artifacts (`dossier.md`, `problem.md`, `causes.md` if any,
    `solution.md`, `actions.md`/`monitor.md` if produced).
-2. **Invoke the Inspector** (`agents/inspector.md`) in **FINAL mode** — the full pass:
+2. **Delegate to the `inspector` subagent** (Agent tool — runs on its grade model,
+   Opus; else adopt its role inline) in **FINAL mode** — the full pass:
    - **Sources** (Art. I): every fact cites a real internet source; spot-check the
      riskiest by searching. Uncited/hallucinated → automatic VETO until fixed.
    - **Compliance** (Art. II): sector fit; flag where human/expert review is required.

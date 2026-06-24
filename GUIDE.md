@@ -40,6 +40,16 @@ Un soldat = 1 skill (procédure) + 1 agent (Claude) + 1 port .py (OpenAI).
 critère d'élite est la **profondeur de raisonnement**, pas la célébrité de la
 méthode.
 
+**Application des grades selon l'hôte :**
+- **Claude Code** (abonnement Max) : les commandes `/solve.*` **délèguent à l'officier
+  en sous-agent** (Agent tool) → il tourne sur son modèle de frontmatter (officiers =
+  Opus), facturé sur Max. Les **soldats** s'exécutent dans le contexte de l'officier
+  (les sous-agents ne descendent que d'1 niveau) → pas de switch 🔵/🎖️ *par soldat*.
+- **Codex / cursor / copilot / gemini / opencode** : un **seul modèle de session** pour
+  toute la chaîne (ces hôtes ne lisent pas le `model:` par unité) → grades indicatifs.
+- **Port Python** (`solve run`) : modèles **figés par unité** (gpt-5 / gpt-5-mini),
+  appliqués strictement par le SDK (clé API).
+
 **Délégation :** « le manager garde la main » (agents-as-tools / `.as_tool()`). Sur
 Claude, les sous-agents ne descendent que d'un niveau : la délégation profonde passe
 par Workflow ou par OpenAI ; sinon l'officier « enfile le casque » du soldat en

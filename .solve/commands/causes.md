@@ -10,7 +10,8 @@ minimal MECE). `$MISSION` = `$ARGUMENTS`.
 
 ## Do
 1. **Read in**: `$MISSION/problem.md` (+ baseline) and `$MISSION/dossier.md`.
-2. **Invoke Officer 2** (`agents/officer-2-root-cause.md`, or adopt its role): get to
+2. **Delegate to the `officer-2-root-cause` subagent** (Agent tool — runs on its grade
+   model; else adopt its role inline): get to
    true causes with the minimal set of soldiers — Ishikawa (5M), 5-Whys, relations
    diagram, MECE. Rank causes; flag the **driving** ones; keep the set MECE.
 3. **Fill** `.solve/templates/causes-template.md` → write `$MISSION/causes.md`. Every
