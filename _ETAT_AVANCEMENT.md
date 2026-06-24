@@ -2,7 +2,7 @@
 
 > **But de ce fichier :** point d'ancrage durable. Quand l'utilisateur demande
 > « où es-tu ? », Claude LIT ce fichier (ne devine pas). Mis à jour à chaque
-> soldat/officier terminé. Dernière maj : UPGRADE Bloc #4 (checkpoint HITL avant Phase 4, mission.py refondu en 2 stages) livré. Les 4 upgrades pipeline sont complets.
+> soldat/officier terminé. Dernière maj : STAGE A (packaging Solve-Kit) livré — `openai/`→`solve_kit/` (paquet pip), pyproject + entry point, tests sans réseau (12 OK), README + docs. Repo `Meristina/solve-kit`, branche `claude/solve-kit-packaging`.
 
 ---
 
@@ -16,7 +16,7 @@ qualité, droit de veto).
 
 ## 🧱 DÉCISIONS DE DESIGN (verrouillées)
 1. **Portabilité** : chaque unité existe en 2 exemplaires → `agents/*.md` (Claude)
-   + `openai/**/*.py` (OpenAI). Les skills (`skills/*/SKILL.md`) sont côté Claude ;
+   + `solve_kit/**/*.py` (OpenAI). Les skills (`skills/*/SKILL.md`) sont côté Claude ;
    côté OpenAI la procédure est intégrée dans les instructions du soldat.
 2. **Arsenal partagé** : une méthode = UNE skill + UN soldat, réutilisé par
    plusieurs officiers (pas de duplication).
@@ -35,12 +35,12 @@ qualité, droit de veto).
 2. Écrire `agents/soldier-<methode>.md` (frontmatter name/description/model/color
    + corps : rôle, manuel=skill, règles dures, ce qu'il rend).
 3. Écrire `skills/<methode>/SKILL.md` (procédure + template + format de sortie).
-4. Écrire `openai/soldiers/soldier_<methode>.py` (Agent + WebSearchTool + modèle).
+4. Écrire `solve_kit/soldiers/soldier_<methode>.py` (Agent + WebSearchTool + modèle).
 5. **Câbler chez l'officier OpenAI** : décommenter l'`import` + la ligne `.as_tool()`.
    (Côté Claude : l'officier liste déjà le soldat dans son tableau d'arsenal.)
 6. Mettre à jour CE fichier.
 
-## 🪖 CÂBLAGE COMMANDANT (openai/commander.py)
+## 🪖 CÂBLAGE COMMANDANT (solve_kit/commander.py)
 - ✅ Officier 1, 2, 3, 4, 5 **et Inspecteur** branchés (import + as_tool). Chaîne complète.
 
 ---
@@ -48,10 +48,10 @@ qualité, droit de veto).
 ## 📊 PROGRESSION DÉTAILLÉE
 
 ### 🔴 Commandant — ✅ COMPLET
-`agents/commander-problem-solving.md` + `openai/commander.py` (Opus / model fort).
+`agents/commander-problem-solving.md` + `solve_kit/commander.py` (Opus / model fort).
 
 ### 🟠 Officier 1 · Définir le problème — ✅ COMPLET (8/8 + 2 partagés baseline)
-`officer-1-define-problem.md` + `openai/officers/officer_1_define_problem.py`
+`officer-1-define-problem.md` + `solve_kit/officers/officer_1_define_problem.py`
 Mandat étendu (Bloc #2) : **définir ET quantifier** l'état actuel (baseline).
 | Soldat | Grade | Partage |
 |---|---|---|
@@ -67,18 +67,18 @@ Mandat étendu (Bloc #2) : **définir ET quantifier** l'état actuel (baseline).
 | ♻️ Tableau de bord | 🔵 | O1+O5 (baseline) |
 
 ### 🟠 Officier 2 · Identifier les causes — ✅ COMPLET (6/6)
-`officer-2-root-cause.md` + `openai/officers/officer_2_root_cause.py`
+`officer-2-root-cause.md` + `solve_kit/officers/officer_2_root_cause.py`
 - ♻️ hérités : 5-Pourquoi, Brainstorming, QQOQCP
 - 🆕 Ishikawa 🔵 · Relations 🎖️ · MECE 🎖️ (partagé O2+O3)
 
 ### 🟠 Officier 3 · Trouver la solution — ✅ COMPLET (12/12)
-`officer-3-solution.md` + `openai/officers/officer_3_solution.py` (12 outils soldats actifs : 7 nouveaux + 5 partagés)
+`officer-3-solution.md` + `solve_kit/officers/officer_3_solution.py` (12 outils soldats actifs : 7 nouveaux + 5 partagés)
 - ♻️ hérités CÂBLÉS : Brainstorming, Reverse-BS, CATWOE, CIRCEPT, MECE
 - 🆕 DIVERGER : **SCAMPER** 🔵 · **ASIT** 🔵 · **Matrice de découverte** 🔵
 - 🆕 CONVERGER : **Diagramme en arbre** 🔵 · **Analyse de la valeur** 🔵 · **Matrice de décision** 🎖️ · **Delphes** 🔵
 
 ### 🟠 Officier 4 · Lancer les actions — ✅ COMPLET (4 nouveaux + 1 partagé)
-`officer-4-launch-actions.md` + `openai/officers/officer_4_launch_actions.py` (🎖️ opus/gpt-5)
+`officer-4-launch-actions.md` + `solve_kit/officers/officer_4_launch_actions.py` (🎖️ opus/gpt-5)
 Mouvements : **PLAN → SCHEDULE → SECURE**.
 - 🆕 PLAN : **Plan d'action** 🔵 (actions owned/testables ; **sans champ statut** → suivi = O5)
 - ♻️ PLAN : **QQOQCP** 🔵 (partagé O1+O2+O4 — deep-frame d'UNE action complexe)
@@ -87,13 +87,13 @@ Mouvements : **PLAN → SCHEDULE → SECURE**.
 - 🔧 Révision périmètre (validée) : statut retiré (→O5) · QQOQCP recâblé · frontière O3-tree clarifiée · soldat Risques ajouté.
 
 ### 🟠 Officier 5 · Suivre l'efficacité — ✅ COMPLET (2 nouveaux + 1 partagé)
-`officer-5-monitor.md` + `openai/officers/officer_5_monitor.py` (🎖️ opus/gpt-5) — câblé au commandant.
+`officer-5-monitor.md` + `solve_kit/officers/officer_5_monitor.py` (🎖️ opus/gpt-5) — câblé au commandant.
 Mouvements : **MEASURE → STEER** (boucle Check/Act du PDCA).
 - 🆕 MEASURE : **Tableau de bord** 🔵 · **Feuille de relevés** 🔵 — désormais **partagés O1+O5** (baseline en O1, suivi solution en O5)
 - ♻️ STEER : **Pareto** 🔵 (partagé O1+O5 — déviations vital-few)
 
 ### 🛡️ Inspecteur (transverse, fin de boucle) — ✅ COMPLET
-`agents/inspector.md` + `openai/inspector.py` (🎖️ opus/gpt-5, color purple) — câblé au commandant (`inspect`).
+`agents/inspector.md` + `solve_kit/inspector.py` (🎖️ opus/gpt-5, color purple) — câblé au commandant (`inspect`).
 Vérifie : (a) sources internet (rien d'inventé) · (b) conformité secteur · (c) qualité
 (avocat du diable → converge). Verdict PASS / PASS-WITH-FIXES / VETO + ré-inspection.
 Audit only (ne refait pas le travail des officiers).
@@ -108,7 +108,7 @@ Audit only (ne refait pas le travail des officiers).
 ## 🔁 UPGRADES PIPELINE (post-MVP, 3 blocs — cadence : bloc par bloc avec validation)
 - ✅ **Bloc #1 — Dossier de Mission + boucle de contrôle** (code-driven).
   Livré : `skills/mission-dossier/SKILL.md` · maj `commander.md` (sections « Mission
-  Dossier » + « Control loop ») · **nouveau `openai/mission.py`** (runner déterministe :
+  Dossier » + « Control loop ») · **nouveau `solve_kit/mission.py`** (runner déterministe :
   dossier-dict, boucle commandant→inspecteur, ré-entrée sur VETO, `MAX_ITERS=3`) ·
   note d'entrée dans `commander.py`. Parser de verdict testé (VETO > PASS).
 - ✅ **Bloc #2 — Mesure baseline** : `commander.md` Phase 1 = définir + quantifier ·
@@ -125,8 +125,18 @@ Audit only (ne refait pas le travail des officiers).
   (DECIDE 0-3 → pause humaine `approval_fn` → EXECUTE 4-5) avec `console_approval` +
   `auto_approve` injectables · champ `hitl` au Dossier · GUIDE maj.
 
+## 🧰 SOLVE-KIT — transformation en toolkit façon spec-kit (plan validé)
+- ✅ **STAGE A — packager le moteur** : `git mv openai/ → solve_kit/` (paquet pip,
+  imports relatifs, `__init__.py`, `main()`), `pyproject.toml` + `requirements.txt`,
+  `tests/` (structure + harness e2e stub-SDK, **12 tests OK**), `README.md`, GUIDE/ÉTAT
+  maj. Corrige le shadowing `openai/`. Branche `claude/solve-kit-packaging`.
+- ⏳ **STAGE B — bâtir le toolkit** : `.solve/` (constitution 10 articles + 7 templates
+  + 9 commandes `/solve.*` + scripts), artefacts `missions/<NNN>/`. **Phase 1 = pack
+  Claude (MVP : spine mission→define→design→HITL→inspect)** puis **Phase 2 = CLI**
+  (`solve init/run`, `runner_bridge`→`solve_kit.mission`).
+
 ## ▶️ PROCHAINE ACTION
-🎉 **Les 4 upgrades sont livrés** (Dossier+boucle · baseline · gates · HITL). Pipeline
-complet et durci. Pistes restantes purement optionnelles : (1) `pip install
-openai-agents` + `__init__.py` pour un vrai run live ; (2) test de bout en bout sur un
-problème réel à toi (Claude inline, sans dépendance).
+Commit + push de Stage A (branche `claude/solve-kit-packaging`) → ouvrir la PR, PUIS
+démarrer **STAGE B Phase 1** : `.solve/memory/constitution.md` + 3 templates porteurs
+(`dossier`, `problem`, `solution`) + `new-mission.sh` + la colonne de commandes
+`/solve.mission .define .design .gate .inspect` (MVP run réel jusqu'au go/no-go).

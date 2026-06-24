@@ -25,12 +25,12 @@ Entry points:
 from agents import Agent, Runner, WebSearchTool
 
 # Officers and inspector are imported as they get built (one per turn).
-from officers.officer_1_define_problem import officer_1
-from officers.officer_2_root_cause import officer_2
-from officers.officer_3_solution import officer_3
-from officers.officer_4_launch_actions import officer_4
-from officers.officer_5_monitor import officer_5
-from inspector import inspector
+from .officers.officer_1_define_problem import officer_1
+from .officers.officer_2_root_cause import officer_2
+from .officers.officer_3_solution import officer_3
+from .officers.officer_4_launch_actions import officer_4
+from .officers.officer_5_monitor import officer_5
+from .inspector import inspector
 
 COMMANDER_INSTRUCTIONS = """
 You are the COMMANDER of a generalist, sector-agnostic problem-solving army.

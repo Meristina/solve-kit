@@ -23,8 +23,8 @@ import sys
 
 from agents import Runner
 
-from commander import commander
-from inspector import inspector
+from .commander import commander
+from .inspector import inspector
 
 MAX_ITERS = 3  # iteration cap — deliver-with-residual-risk rather than thrash forever
 
@@ -189,7 +189,8 @@ def run_mission(problem: str, approval_fn=console_approval) -> dict:
     return dossier
 
 
-if __name__ == "__main__":
+def main() -> None:
+    """Console-script entry point (`solve-kit-mission "<problem>"`)."""
     problem = sys.argv[1] if len(sys.argv) > 1 else "We have a problem: ... (describe it)"
     final = run_mission(problem)  # interactive human gate by default
     print("\n=== DELIVERED ===")
@@ -200,3 +201,7 @@ if __name__ == "__main__":
     if final.get("residual_risk"):
         print("\n=== RESIDUAL RISK ===")
         print(final["residual_risk"])
+
+
+if __name__ == "__main__":
+    main()

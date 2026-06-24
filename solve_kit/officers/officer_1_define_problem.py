@@ -9,18 +9,18 @@ via .as_tool(). It returns one synthesized problem statement to the commander.
 from agents import Agent, WebSearchTool
 
 # Soldiers are imported as they get built (one per turn).
-from soldiers.soldier_qqoqcp import soldier_qqoqcp
-from soldiers.soldier_catwoe import soldier_catwoe
-from soldiers.soldier_5_whys import soldier_5_whys
-from soldiers.soldier_brainstorming import soldier_brainstorming
-from soldiers.soldier_reverse_brainstorming import soldier_reverse_brainstorming
-from soldiers.soldier_affinity_diagram import soldier_affinity_diagram
-from soldiers.soldier_circept import soldier_circept
-from soldiers.soldier_pareto import soldier_pareto
+from ..soldiers.soldier_qqoqcp import soldier_qqoqcp
+from ..soldiers.soldier_catwoe import soldier_catwoe
+from ..soldiers.soldier_5_whys import soldier_5_whys
+from ..soldiers.soldier_brainstorming import soldier_brainstorming
+from ..soldiers.soldier_reverse_brainstorming import soldier_reverse_brainstorming
+from ..soldiers.soldier_affinity_diagram import soldier_affinity_diagram
+from ..soldiers.soldier_circept import soldier_circept
+from ..soldiers.soldier_pareto import soldier_pareto
 
 # Shared with Officer 5 — reused here to baseline the CURRENT state of the problem:
-from soldiers.soldier_check_sheet import soldier_check_sheet
-from soldiers.soldier_dashboard import soldier_dashboard
+from ..soldiers.soldier_check_sheet import soldier_check_sheet
+from ..soldiers.soldier_dashboard import soldier_dashboard
 
 OFFICER_1_INSTRUCTIONS = """
 You are OFFICER 1: DEFINE THE PROBLEM. Mission: turn a vague situation into a
