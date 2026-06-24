@@ -16,7 +16,8 @@ Only proceed when `hitl: GO` is recorded.
 
 ## Do
 1. **Read in**: `$MISSION/solution.md`, `$MISSION/decision-package.md`, `dossier.md`.
-2. **Invoke Officer 4** (`agents/officer-4-launch-actions.md`, or adopt its role):
+2. **Delegate to the `officer-4-launch-actions` subagent** (Agent tool — runs on its
+   grade model; else adopt its role inline):
    PLAN (action-plan: owner/resources/deadline/success-criterion/deps — **no status
    field**) → SCHEDULE (PERT critical path, Gantt) → SECURE (risk-raid register).
 3. **Fill** `.solve/templates/actions-template.md` → write `$MISSION/actions.md`.

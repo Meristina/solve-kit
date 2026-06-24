@@ -10,7 +10,8 @@ the loop). `$MISSION` = `$ARGUMENTS`.
 
 ## Do
 1. **Read in**: `$MISSION/actions.md`, `$MISSION/problem.md` (the **baseline**), `dossier.md`.
-2. **Invoke Officer 5** (`agents/officer-5-monitor.md`, or adopt its role): MEASURE
+2. **Delegate to the `officer-5-monitor` subagent** (Agent tool — runs on its grade
+   model; else adopt its role inline): MEASURE
    (dashboard KPIs **vs the Phase-1 baseline** + check-sheet to collect) → STEER
    (Pareto the vital-few deviations; decide sustain / correct / escalate / loop back).
 3. **Fill** `.solve/templates/monitor-template.md` → write `$MISSION/monitor.md`.

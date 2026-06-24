@@ -11,7 +11,8 @@ minimal MECE). `$MISSION` = `$ARGUMENTS`.
 ## Do
 1. **Read in**: `$MISSION/dossier.md` and `$MISSION/causes.md` if present, else
    `$MISSION/problem.md` (the driving causes / the problem to solve).
-2. **Invoke Officer 3** (`agents/officer-3-solution.md`, or adopt its role): diverge
+2. **Delegate to the `officer-3-solution` subagent** (Agent tool — runs on its grade
+   model; else adopt its role inline): diverge
    (e.g. brainstorming / scamper / asit) to generate options, then converge with the
    **decision-matrix** soldier — weights fixed BEFORE scoring, knock-outs first,
    consistent scale, weighted totals, and a **sensitivity** check. Trade-offs visible.

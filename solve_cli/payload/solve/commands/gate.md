@@ -11,7 +11,8 @@ the phase (`define` or `design`) and optionally the mission dir.
 ## Do
 1. **Read** the phase artifact (`problem.md` for `define`, `solution.md` for `design`)
    and `dossier.md`.
-2. **Invoke the Inspector** (`agents/inspector.md`) in **GATE mode** — check ONLY:
+2. **Delegate to the `inspector` subagent** (Agent tool — runs on its grade model,
+   Opus; else adopt its role inline) in **GATE mode** — check ONLY:
    - is the phase's **definition of done** met (complete for the phase)?
    - any **unsourced fact / fabricated number / invented citation**? (Art. I)
    Keep it cheap — no full compliance sweep, no deep devil's-advocate here.
