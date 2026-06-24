@@ -9,6 +9,7 @@ commander. The shared Pareto is reused from the common armory.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 # Shared soldier reused from the common armory (already built):
 from ..soldiers.soldier_pareto import soldier_pareto
@@ -48,7 +49,7 @@ officer_5 = Agent(
     name="officer_5_monitor",
     handoff_description="Phase 5 specialist: measures results vs target and steers the outcome.",
     instructions=OFFICER_5_INSTRUCTIONS,
-    model="gpt-5",  # elite tier — mirror of opus on the Claude side
+    model=ELITE,  # elite tier — mirror of opus on the Claude side
     tools=[
         WebSearchTool(),  # internet access for every unit
         # New Phase-5 soldiers — measure:

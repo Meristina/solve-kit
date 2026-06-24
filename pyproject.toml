@@ -13,6 +13,9 @@ dependencies = ["openai-agents"]
 
 [project.optional-dependencies]
 dev = ["pytest"]
+# Non-OpenAI providers (Anthropic, Gemini, local, …) for the Python runtime,
+# via SOLVE_KIT_ELITE_MODEL / SOLVE_KIT_STANDARD_MODEL = "litellm/<provider>/<model>".
+litellm = ["openai-agents[litellm]"]
 
 [project.scripts]
 solve = "solve_cli.cli:main"

@@ -10,6 +10,7 @@ Costs and worths are evidence-based (web-sourced or flagged), never invented.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 VALUE_ANALYSIS_INSTRUCTIONS = """
 You are a Value Analysis soldier (analyse de la valeur, L. D. Miles). Judge a
@@ -47,5 +48,5 @@ soldier_value_analysis = Agent(
     handoff_description="Maximizes Value = Function / Cost; optimizes a solution's value-for-money.",
     instructions=VALUE_ANALYSIS_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet to back costs/worths with real figures; cited
-    model="gpt-5-mini",  # structuring workhorse, light model
+    model=STANDARD,  # structuring workhorse, light model
 )

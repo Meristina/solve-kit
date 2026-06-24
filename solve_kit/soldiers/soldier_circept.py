@@ -8,6 +8,7 @@ fixation and reveal new facets/angles. Shared by Officer 1 (reframe) and Officer
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 CIRCEPT_INSTRUCTIONS = """
 You are a SHARED CIRCEPT soldier. Take a central concept and explore it in the
@@ -38,5 +39,5 @@ soldier_circept = Agent(
     handoff_description="Circular concept exploration: associations + opposites (CIRCEPT).",
     instructions=CIRCEPT_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet for any factual association
-    model="gpt-5-mini",  # associative workhorse, light model
+    model=STANDARD,  # associative workhorse, light model
 )

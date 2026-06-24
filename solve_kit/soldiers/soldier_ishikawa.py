@@ -8,6 +8,7 @@ hypotheses until evidenced; facts web-sourced or flagged.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 ISHIKAWA_INSTRUCTIONS = """
 You are an Ishikawa (fishbone) soldier. Lay out all CANDIDATE causes of one effect
@@ -36,5 +37,5 @@ soldier_ishikawa = Agent(
     handoff_description="Maps candidate causes across 5M categories (Ishikawa/fishbone).",
     instructions=ISHIKAWA_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet to evidence/refute candidate causes
-    model="gpt-5-mini",  # categorization workhorse, light model
+    model=STANDARD,  # categorization workhorse, light model
 )

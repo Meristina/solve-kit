@@ -8,6 +8,7 @@ launch-ready plan to the commander.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 # Phase-4 new soldiers:
 from ..soldiers.soldier_action_plan import soldier_action_plan
@@ -51,7 +52,7 @@ officer_4 = Agent(
     name="officer_4_launch_actions",
     handoff_description="Phase 4 specialist: turns a chosen solution into an owned, scheduled plan.",
     instructions=OFFICER_4_INSTRUCTIONS,
-    model="gpt-5",  # elite tier — mirror of opus on the Claude side
+    model=ELITE,  # elite tier — mirror of opus on the Claude side
     tools=[
         WebSearchTool(),  # internet access for every unit
         # Plan:

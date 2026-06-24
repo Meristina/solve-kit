@@ -11,6 +11,7 @@ is web-sourced or flagged.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 ASIT_INSTRUCTIONS = """
 You are an ASIT soldier (Advanced Systematic Inventive Thinking, TRIZ-derived).
@@ -52,5 +53,5 @@ soldier_asit = Agent(
     handoff_description="Invents closed-world solution variants via the five ASIT tools.",
     instructions=ASIT_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet for analogous precedents; borrowed facts cited
-    model="gpt-5-mini",  # divergent workhorse, light model
+    model=STANDARD,  # divergent workhorse, light model
 )

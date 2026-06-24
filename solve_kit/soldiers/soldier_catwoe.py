@@ -8,6 +8,7 @@ a filled CATWOE table + root definition to Officer 1.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 CATWOE_INSTRUCTIONS = """
 You are a CATWOE soldier. Map the human system around a problem:
@@ -36,5 +37,5 @@ soldier_catwoe = Agent(
     handoff_description="Maps stakeholders & worldview behind a problem (CATWOE).",
     instructions=CATWOE_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet access — no invented facts
-    model="gpt-5-mini",  # light executor
+    model=STANDARD,  # light executor
 )

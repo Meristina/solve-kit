@@ -10,6 +10,7 @@ basis is web-sourced or flagged.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 RISK_RAID_INSTRUCTIONS = """
 You are a Risk/RAID soldier. Stress-test a plan by asking what could make it fail,
@@ -57,5 +58,5 @@ soldier_risk_raid = Agent(
     handoff_description="Anticipates what can break the launch: risk register + RAID log with owners.",
     instructions=RISK_RAID_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet to back probability/impact bases; figures cited or flagged
-    model="gpt-5-mini",  # structuring workhorse, light model
+    model=STANDARD,  # structuring workhorse, light model
 )

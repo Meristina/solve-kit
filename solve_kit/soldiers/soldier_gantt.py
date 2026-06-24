@@ -9,6 +9,7 @@ dependencies/durations; dates are web-sourced or flagged, never invented.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 GANTT_INSTRUCTIONS = """
 You are a Gantt soldier. Take the action plan and its sequencing (ideally PERT's
@@ -44,5 +45,5 @@ soldier_gantt = Agent(
     handoff_description="Lays the schedule on a calendar timeline with bars, milestones, critical path.",
     instructions=GANTT_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet to back dates; figures cited or flagged
-    model="gpt-5-mini",  # rendering workhorse, light model
+    model=STANDARD,  # rendering workhorse, light model
 )

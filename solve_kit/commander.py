@@ -23,6 +23,7 @@ Entry points:
 """
 
 from agents import Agent, Runner, WebSearchTool
+from .models import ELITE, STANDARD
 
 # Officers and inspector are imported as they get built (one per turn).
 from .officers.officer_1_define_problem import officer_1
@@ -62,7 +63,7 @@ what was verified / changed after critique / still risky.
 commander = Agent(
     name="commander",
     instructions=COMMANDER_INSTRUCTIONS,
-    model="gpt-5",  # elite tier — mirror of opus on the Claude side
+    model=ELITE,  # elite tier — mirror of opus on the Claude side
     tools=[
         WebSearchTool(),  # every unit can research; the commander too
         officer_1.as_tool(

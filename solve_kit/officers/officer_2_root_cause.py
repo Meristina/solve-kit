@@ -10,6 +10,7 @@ shared-armory payoff. New soldiers get added one by one.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 # Shared soldiers reused from the common armory (already built):
 from ..soldiers.soldier_5_whys import soldier_5_whys
@@ -47,7 +48,7 @@ officer_2 = Agent(
     name="officer_2_root_cause",
     handoff_description="Phase 2 specialist: finds validated, ranked root causes.",
     instructions=OFFICER_2_INSTRUCTIONS,
-    model="gpt-5",  # elite tier — mirror of opus on the Claude side
+    model=ELITE,  # elite tier — mirror of opus on the Claude side
     tools=[
         WebSearchTool(),  # internet access for every unit
         # New soldiers (uncomment as each is built):

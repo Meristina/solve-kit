@@ -8,6 +8,7 @@ factual claim is web-sourced or flagged. Returns a clustered idea list.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 BRAINSTORMING_INSTRUCTIONS = """
 You are a SHARED brainstorming soldier (Osborn). Generate many diverse ideas,
@@ -40,5 +41,5 @@ soldier_brainstorming = Agent(
     handoff_description="Generates many diverse candidate ideas (framings/causes/solutions).",
     instructions=BRAINSTORMING_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet for stimulus; borrowed facts cited
-    model="gpt-5-mini",  # divergent workhorse, light model
+    model=STANDARD,  # divergent workhorse, light model
 )

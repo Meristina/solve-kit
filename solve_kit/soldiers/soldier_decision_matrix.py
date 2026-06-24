@@ -10,6 +10,7 @@ No option wins on invented data — every factual score is web-sourced or flagge
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 DECISION_MATRIX_INSTRUCTIONS = """
 You are an ELITE Decision Matrix soldier (weighted-criteria scoring / Pugh-style
@@ -48,5 +49,5 @@ soldier_decision_matrix = Agent(
     handoff_description="Scores options on weighted criteria and makes the defensible final pick.",
     instructions=DECISION_MATRIX_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet to back factual scores; no pick on invented data
-    model="gpt-5",  # elite: honest weighting, evidence, and sensitivity is hard reasoning
+    model=ELITE,  # elite: honest weighting, evidence, and sensitivity is hard reasoning
 )

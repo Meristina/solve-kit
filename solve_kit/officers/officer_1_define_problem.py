@@ -7,6 +7,7 @@ via .as_tool(). It returns one synthesized problem statement to the commander.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 # Soldiers are imported as they get built (one per turn).
 from ..soldiers.soldier_qqoqcp import soldier_qqoqcp
@@ -55,7 +56,7 @@ officer_1 = Agent(
     name="officer_1_define_problem",
     handoff_description="Phase 1 specialist: frames and prioritizes the right problem.",
     instructions=OFFICER_1_INSTRUCTIONS,
-    model="gpt-5",  # elite tier — mirror of opus on the Claude side
+    model=ELITE,  # elite tier — mirror of opus on the Claude side
     tools=[
         WebSearchTool(),  # internet access for every unit
         soldier_qqoqcp.as_tool(

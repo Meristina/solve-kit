@@ -11,6 +11,7 @@ self-contained (OpenAI has no SKILL.md loader; the field manual lives here).
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 QQOQCP_INSTRUCTIONS = """
 You are a QQOQCP soldier. Characterize a situation along seven dimensions:
@@ -35,5 +36,5 @@ soldier_qqoqcp = Agent(
     handoff_description="Characterizes a situation factually via QQOQCP (5W2H).",
     instructions=QQOQCP_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet access — no invented facts
-    model="gpt-5-mini",  # soldiers are light executors; officers/commander are heavier
+    model=STANDARD,  # soldiers are light executors; officers/commander are heavier
 )

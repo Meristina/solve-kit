@@ -14,11 +14,13 @@ OFFICERS = PKG / "officers"
 SOLDIERS = PKG / "soldiers"
 SKILLS = ROOT / "skills"
 
-GRADE = {"gpt-5": "opus", "gpt-5-mini": "sonnet"}  # py model -> md model
+GRADE = {"ELITE": "opus", "STANDARD": "sonnet"}  # py grade token -> md model
 
 
 def _py_model(path: Path) -> str:
-    m = re.search(r'model="([^"]+)"', path.read_text(encoding="utf-8"))
+    # Models are resolved via ELITE/STANDARD tokens (solve_kit/models.py, env-configurable);
+    # the grade token is what must mirror the md frontmatter.
+    m = re.search(r"model=(ELITE|STANDARD)\b", path.read_text(encoding="utf-8"))
     return m.group(1) if m else ""
 
 

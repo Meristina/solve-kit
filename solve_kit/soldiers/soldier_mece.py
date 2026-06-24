@@ -11,6 +11,7 @@ Elite = heavier model (full gpt-5): logical structuring is hard reasoning.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 MECE_INSTRUCTIONS = """
 You are an ELITE, SHARED MECE soldier. Judge and repair the logic of a breakdown:
@@ -44,5 +45,5 @@ soldier_mece = Agent(
     handoff_description="Structures/audits a breakdown to be MECE (no overlap, no gap) — elite.",
     instructions=MECE_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet to evidence domain coverage (CE test)
-    model="gpt-5",  # elite: logical structuring is hard reasoning
+    model=ELITE,  # elite: logical structuring is hard reasoning
 )

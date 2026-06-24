@@ -10,6 +10,7 @@ correct.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 PERT_INSTRUCTIONS = """
 You are an ELITE PERT / CPM soldier. Turn a list of actions and dependencies into a
@@ -48,5 +49,5 @@ soldier_pert = Agent(
     handoff_description="Computes the critical path, slack, and realistic duration over a task network.",
     instructions=PERT_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet to back task durations; figures cited or flagged
-    model="gpt-5",  # elite: forward/backward-pass reasoning and honest estimation is hard
+    model=ELITE,  # elite: forward/backward-pass reasoning and honest estimation is hard
 )

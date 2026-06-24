@@ -10,6 +10,7 @@ experts are flagged and factual anchors are web-sourced.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 DELPHI_INSTRUCTIONS = """
 You are a Delphi soldier (Dalkey & Helmer, RAND). When no clean data settles a
@@ -58,5 +59,5 @@ soldier_delphi = Agent(
     handoff_description="Converges expert judgment via anonymous iterative rounds when data is scarce.",
     instructions=DELPHI_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet to anchor personas/estimates; simulated opinion stays labeled
-    model="gpt-5-mini",  # structuring workhorse, light model
+    model=STANDARD,  # structuring workhorse, light model
 )

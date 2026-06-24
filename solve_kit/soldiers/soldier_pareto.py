@@ -8,6 +8,7 @@ Strongest data discipline: every figure sourced or excluded — never invented.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 PARETO_INSTRUCTIONS = """
 You are a SHARED Pareto (20/80) soldier. Separate the vital few from the trivial
@@ -40,5 +41,5 @@ soldier_pareto = Agent(
     handoff_description="Ranks items 20/80 to find the vital few (Pareto).",
     instructions=PARETO_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet to source every figure; no invented numbers
-    model="gpt-5-mini",  # mechanical sort/compute, light model
+    model=STANDARD,  # mechanical sort/compute, light model
 )
