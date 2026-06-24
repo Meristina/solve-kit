@@ -10,13 +10,13 @@ launch-ready plan to the commander.
 from agents import Agent, WebSearchTool
 
 # Phase-4 new soldiers:
-from soldiers.soldier_action_plan import soldier_action_plan
-from soldiers.soldier_pert import soldier_pert
-from soldiers.soldier_gantt import soldier_gantt
-from soldiers.soldier_risk_raid import soldier_risk_raid
+from ..soldiers.soldier_action_plan import soldier_action_plan
+from ..soldiers.soldier_pert import soldier_pert
+from ..soldiers.soldier_gantt import soldier_gantt
+from ..soldiers.soldier_risk_raid import soldier_risk_raid
 
 # Shared soldier reused from the common armory:
-from soldiers.soldier_qqoqcp import soldier_qqoqcp
+from ..soldiers.soldier_qqoqcp import soldier_qqoqcp
 
 OFFICER_4_INSTRUCTIONS = """
 You are OFFICER 4: LAUNCH THE ACTIONS. Mission: take the CHOSEN solution (Phase 3)

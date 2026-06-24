@@ -12,20 +12,20 @@ shared-armory payoff of the whole army.
 from agents import Agent, WebSearchTool
 
 # Shared soldiers reused from the common armory (already built):
-from soldiers.soldier_brainstorming import soldier_brainstorming
-from soldiers.soldier_reverse_brainstorming import soldier_reverse_brainstorming
-from soldiers.soldier_catwoe import soldier_catwoe
-from soldiers.soldier_circept import soldier_circept
-from soldiers.soldier_mece import soldier_mece
+from ..soldiers.soldier_brainstorming import soldier_brainstorming
+from ..soldiers.soldier_reverse_brainstorming import soldier_reverse_brainstorming
+from ..soldiers.soldier_catwoe import soldier_catwoe
+from ..soldiers.soldier_circept import soldier_circept
+from ..soldiers.soldier_mece import soldier_mece
 
 # New Phase-3 soldiers (all built):
-from soldiers.soldier_scamper import soldier_scamper
-from soldiers.soldier_asit import soldier_asit
-from soldiers.soldier_discovery_matrix import soldier_discovery_matrix
-from soldiers.soldier_tree_diagram import soldier_tree_diagram
-from soldiers.soldier_value_analysis import soldier_value_analysis
-from soldiers.soldier_decision_matrix import soldier_decision_matrix
-from soldiers.soldier_delphi import soldier_delphi
+from ..soldiers.soldier_scamper import soldier_scamper
+from ..soldiers.soldier_asit import soldier_asit
+from ..soldiers.soldier_discovery_matrix import soldier_discovery_matrix
+from ..soldiers.soldier_tree_diagram import soldier_tree_diagram
+from ..soldiers.soldier_value_analysis import soldier_value_analysis
+from ..soldiers.soldier_decision_matrix import soldier_decision_matrix
+from ..soldiers.soldier_delphi import soldier_delphi
 
 OFFICER_3_INSTRUCTIONS = """
 You are OFFICER 3: DESIGN THE SOLUTION. Mission: from the driving root causes,

@@ -51,25 +51,29 @@ chargeant sa skill.
 ## 3. Arborescence
 
 ```
-Armee_Resolution_Probleme/
+solve-kit/
+├─ README.md                   ← présentation + quickstart
 ├─ GUIDE.md                    ← ce fichier
 ├─ _ETAT_AVANCEMENT.md         ← état de construction (point d'ancrage)
+├─ pyproject.toml              ← packaging pip (paquet `solve-kit`)
 ├─ agents/                     ← versions CLAUDE (31 .md)
 │   ├─ commander-problem-solving.md
 │   ├─ inspector.md
 │   ├─ officer-1..5-*.md
 │   └─ soldier-*.md            (24 soldats)
-├─ skills/                     ← procédures CLAUDE (24 SKILL.md)
+├─ skills/                     ← procédures CLAUDE (25 SKILL.md : 24 méthodes + mission-dossier)
 │   └─ <methode>/SKILL.md
-└─ openai/                     ← port OPENAI (31 .py)
-    ├─ commander.py            ← point d'entrée
-    ├─ inspector.py
-    ├─ officers/officer_1..5_*.py
-    └─ soldiers/soldier_*.py   (24 soldats)
+├─ solve_kit/                  ← port OPENAI (paquet, 32 .py + __init__)
+│   ├─ mission.py              ← point d'entrée (boucle + HITL)
+│   ├─ commander.py            ← démo single-pass
+│   ├─ inspector.py
+│   ├─ officers/officer_1..5_*.py
+│   └─ soldiers/soldier_*.py   (24 soldats)
+└─ tests/                      ← audit structurel + harness e2e (stub SDK, sans réseau)
 ```
 
 Portabilité : chaque unité existe en 2 exemplaires — `agents/*.md` (Claude) +
-`openai/**/*.py` (OpenAI). Côté Claude la procédure est une skill ; côté OpenAI elle
+`solve_kit/**/*.py` (OpenAI). Côté Claude la procédure est une skill ; côté OpenAI elle
 est intégrée dans les instructions du soldat.
 
 ---
@@ -122,23 +126,25 @@ l'Inspecteur avant de livrer.
 
 ### Installation
 ```bash
-pip install openai-agents
+pip install -e .            # installe le paquet `solve-kit` (dépendance : openai-agents)
 export OPENAI_API_KEY=sk-...
 ```
 
 ### Exécution
-Les imports sont relatifs au dossier `openai/` (`officers.*`, `soldiers.*`,
-`inspector`). Lancer **depuis `openai/`** (ou ajouter ce dossier au `PYTHONPATH`) :
+`solve_kit/` est un vrai paquet (imports relatifs). Le point d'entrée est `mission.py`
+(boucle + HITL), exposé en console-script :
 
 ```bash
-cd openai
-python commander.py
+solve-kit-mission "<le problème>"
+# ou, équivalent :
+python -m solve_kit.mission "<le problème>"
 ```
 
-`commander.py` instancie le commandant (modèle `gpt-5`), lui branche les 5 officiers
-+ l'Inspecteur via `.as_tool()`, et lance `Runner.run_sync(commander, "<le
-problème>")`. Remplacer la chaîne d'exemple en bas de `commander.py` par le vrai
-problème, ou importer `commander` depuis ton propre script.
+`mission.py` pilote la boucle complète : DECIDE (Phases 0-3) → **pause humaine
+GO/NO-GO/REVISE** → EXECUTE (Phases 4-5) → veto Inspecteur final → itération
+(`MAX_ITERS`). Pour un run **non interactif** (sans pause), appeler
+`solve_kit.mission.run_mission(problème, approval_fn=auto_approve)`. `commander.py`
+reste une **démo single-pass**.
 
 Chaque unité dispose du `WebSearchTool` hébergé : l'accès internet est garanti
 partout, donc aucune unité n'invente de faits.
@@ -151,14 +157,16 @@ partout, donc aucune unité n'invente de faits.
 2. Écrire `agents/soldier-<methode>.md` (frontmatter `name`/`description`/`model`/
    `color` + corps : rôle, manuel = skill, règles dures, ce qu'il rend).
 3. Écrire `skills/<methode>/SKILL.md` (procédure + template + format de sortie).
-4. Écrire `openai/soldiers/soldier_<methode>.py` (Agent + WebSearchTool + modèle).
+4. Écrire `solve_kit/soldiers/soldier_<methode>.py` (Agent + WebSearchTool + modèle).
 5. **Câbler chez l'officier OpenAI** : décommenter l'`import` + la ligne `.as_tool()`.
    (Côté Claude, l'officier liste déjà le soldat dans son tableau d'arsenal.)
 6. Mettre à jour `_ETAT_AVANCEMENT.md`.
 
-**Contrôle qualité** à chaque ajout : `python3 -m py_compile openai/**/*.py` ;
-vérifier `name` == nom de fichier, skill `name` == dossier, grade md↔py cohérent
-(🔵 sonnet↔gpt-5-mini, 🎖️ opus↔gpt-5), et câblage actif chez l'officier.
+**Contrôle qualité** à chaque ajout :
+`find solve_kit -name '*.py' -print0 | xargs -0 python3 -m py_compile` puis
+`python3 -m pytest tests/ -q` (audit structurel automatisé : câblage, parité des
+grades, comptes). Vérifier aussi `name` == nom de fichier, skill `name` == dossier,
+grade md↔py cohérent (🔵 sonnet↔gpt-5-mini, 🎖️ opus↔gpt-5), câblage actif chez l'officier.
 
 ---
 
