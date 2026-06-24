@@ -15,7 +15,8 @@ dependencies = ["openai-agents"]
 dev = ["pytest"]
 
 [project.scripts]
+solve = "solve_cli.cli:main"
 solve-kit-mission = "solve_kit.mission:main"
 
 [tool.setuptools.packages.find]
-include = ["solve_kit*"]
+include = ["solve_kit*", "solve_cli*"]

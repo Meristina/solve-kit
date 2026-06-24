@@ -2,7 +2,7 @@
 
 > **But de ce fichier :** point d'ancrage durable. Quand l'utilisateur demande
 > « où es-tu ? », Claude LIT ce fichier (ne devine pas). Mis à jour à chaque
-> soldat/officier terminé. Dernière maj : STAGE A (packaging Solve-Kit) livré — `openai/`→`solve_kit/` (paquet pip), pyproject + entry point, tests sans réseau (12 OK), README + docs. Repo `Meristina/solve-kit`, branche `claude/solve-kit-packaging`.
+> soldat/officier terminé. Dernière maj : 🎉 SOLVE-KIT COMPLET — Stage A (paquet `solve_kit/`) + Stage B (commandes `/solve.*` + CLI `solve`), 17 tests OK, vérif e2e Meristina réussie. Repo `Meristina/solve-kit`, branche `claude/solve-kit-packaging` (PR #1).
 
 ---
 
@@ -136,10 +136,19 @@ Audit only (ne refait pas le travail des officiers).
   scratch : 9 cmds + 31 agents + 25 skills) · **9 commandes** `.solve/commands/`
   (mission, frame, define, causes, design, act [refuse sans GO], monitor, gate,
   inspect). `missions/` gitignoré. Installeur → `/solve.<name>` dans `~/.claude`.
-- ⏳ **STAGE B Phase 2 — CLI** : `solve init/run/check`, `runner_bridge`→`solve_kit.mission`.
+- ✅ **STAGE B Phase 2 — CLI COMPLÈTE** : paquet `solve_cli/` (cli/scaffolder/
+  integrations/runner_bridge) · console-script **`solve`** (init/run/check/version) ·
+  `solve init --agent claude|cursor|copilot` scaffolde `.solve/` + commandes + (claude)
+  agents/skills · `solve run --auto-approve` → `runner_bridge` appelle
+  `solve_kit.mission.run_mission(..., auto_approve)` **inchangé** et sérialise le
+  dossier en `missions/<NNN>/{dossier,deliverable}.md`. **Tests : 17 OK** (5 CLI).
+  Smoke-test live OK (version/check/init).
+- ✅ **Vérif toolkit e2e** : mission Meristina passée par les commandes → 7 artefacts
+  fichiers, 2 GATE PASS, HITL GO respecté, Inspecteur FINAL = PASS WITH FIXES (a
+  attrapé la conformité loi 09-08/CNDP). `missions/` gitignoré.
 
 ## ▶️ PROCHAINE ACTION
-Vérifier le toolkit e2e (installer via `install-claude.sh` puis lancer `/solve.mission`
-sur un vrai problème dans Claude Code — test « live »/HITL), PUIS **Phase 2 (CLI)** :
-`solve init/run/check` + `runner_bridge` qui appelle `solve_kit.mission.run_mission(...,
-auto_approve)` et sérialise le dossier-dict en `missions/<NNN>/*.md`.
+🎉 **SOLVE-KIT COMPLET** (Stage A packaging + Stage B Phase 1 commandes + Phase 2 CLI,
+le tout testé). Pistes optionnelles : (1) merger la PR #1 ; (2) bundling `payload` en
+package-data pour distribution PyPI hors-repo ; (3) `.github/workflows/ci.yml` (étapes
+compile+pytest) ; (4) étoffer les adaptateurs cursor/copilot (`.mdc` / prompts).
