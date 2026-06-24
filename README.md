@@ -43,6 +43,17 @@ Requires `openai-agents` and `OPENAI_API_KEY`. Every unit has hosted web search,
 no unit invents facts. The interactive run pauses at the human GO/NO-GO/REVISE gate;
 for headless runs, call `solve_kit.mission.run_mission(problem, approval_fn=auto_approve)`.
 
+### CLI — scaffold into any project, any agent
+```bash
+solve init <project> --agent <claude|cursor|copilot|gemini|opencode>
+solve run "<problem>" --auto-approve      # headless, writes missions/<NNN>/
+solve check                               # health/prereqs
+```
+`solve init` writes the `/solve.*` command pack into the chosen agent's native format
+(Claude `.claude/commands/`, Cursor `.cursor/commands/`, Copilot `.github/prompts/`,
+Gemini `.gemini/commands/solve/*.toml`, opencode `.opencode/commands/`) — single source
+in `.solve/commands/`, transcoded per agent.
+
 ## Architecture
 - `solve_kit/` — the OpenAI engine: `commander.py`, `inspector.py`, `mission.py`
   (the deterministic loop + HITL runner), `officers/` (5), `soldiers/` (24).
