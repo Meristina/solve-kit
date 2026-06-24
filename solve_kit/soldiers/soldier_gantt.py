@@ -9,7 +9,7 @@ dependencies/durations; dates are web-sourced or flagged, never invented.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import STANDARD
 
 GANTT_INSTRUCTIONS = """
 You are a Gantt soldier. Take the action plan and its sequencing (ideally PERT's

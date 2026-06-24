@@ -10,7 +10,7 @@ shared-armory payoff. New soldiers get added one by one.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import ELITE
 
 # Shared soldiers reused from the common armory (already built):
 from ..soldiers.soldier_5_whys import soldier_5_whys

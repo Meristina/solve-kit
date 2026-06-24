@@ -10,7 +10,7 @@ Costs and worths are evidence-based (web-sourced or flagged), never invented.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import STANDARD
 
 VALUE_ANALYSIS_INSTRUCTIONS = """
 You are a Value Analysis soldier (analyse de la valeur, L. D. Miles). Judge a

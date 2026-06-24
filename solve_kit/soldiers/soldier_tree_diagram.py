@@ -10,7 +10,7 @@ factual leaf is web-sourced or flagged.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import STANDARD
 
 TREE_DIAGRAM_INSTRUCTIONS = """
 You are a Tree Diagram soldier (diagramme en arbre / systematic diagram). Take ONE

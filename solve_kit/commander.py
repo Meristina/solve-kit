@@ -23,7 +23,7 @@ Entry points:
 """
 
 from agents import Agent, Runner, WebSearchTool
-from .models import ELITE, STANDARD
+from .models import ELITE
 
 # Officers and inspector are imported as they get built (one per turn).
 from .officers.officer_1_define_problem import officer_1

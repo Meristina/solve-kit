@@ -9,7 +9,7 @@ commander. The shared Pareto is reused from the common armory.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import ELITE
 
 # Shared soldier reused from the common armory (already built):
 from ..soldiers.soldier_pareto import soldier_pareto

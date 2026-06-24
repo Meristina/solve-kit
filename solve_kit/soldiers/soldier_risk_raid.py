@@ -10,7 +10,7 @@ basis is web-sourced or flagged.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import STANDARD
 
 RISK_RAID_INSTRUCTIONS = """
 You are a Risk/RAID soldier. Stress-test a plan by asking what could make it fail,

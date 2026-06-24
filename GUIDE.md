@@ -73,12 +73,16 @@ solve-kit/
 │   └─ soldier-*.md            (24 soldats)
 ├─ skills/                     ← procédures CLAUDE (25 SKILL.md : 24 méthodes + mission-dossier)
 │   └─ <methode>/SKILL.md
-├─ solve_kit/                  ← port OPENAI (paquet, 32 .py + __init__)
+├─ solve_kit/                  ← port OPENAI / moteur (paquet, 36 .py)
 │   ├─ mission.py              ← point d'entrée (boucle + HITL)
 │   ├─ commander.py            ← démo single-pass
 │   ├─ inspector.py
+│   ├─ models.py               ← mapping grade→modèle (env-configurable)
 │   ├─ officers/officer_1..5_*.py
 │   └─ soldiers/soldier_*.py   (24 soldats)
+├─ solve_cli/                  ← CLI `solve` (init/run/check/sync) + adaptateurs + payload bundlé
+│   ├─ cli.py  scaffolder.py  integrations.py  runner_bridge.py  sync_payload.py
+│   └─ payload/               ← miroir bundlé (.solve + agents + skills) pour le wheel
 └─ tests/                      ← audit structurel + harness e2e (stub SDK, sans réseau)
 ```
 

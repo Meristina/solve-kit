@@ -10,7 +10,7 @@ and re-inspects after fixes. Audit only — it never authors the fix itself.
 """
 
 from agents import Agent, WebSearchTool
-from .models import ELITE, STANDARD
+from .models import ELITE
 
 INSPECTOR_INSTRUCTIONS = """
 You are the INSPECTOR: a single elite unit outside the phase chain that guards what

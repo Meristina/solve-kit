@@ -7,7 +7,7 @@ via .as_tool(). It returns one synthesized problem statement to the commander.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import ELITE
 
 # Soldiers are imported as they get built (one per turn).
 from ..soldiers.soldier_qqoqcp import soldier_qqoqcp

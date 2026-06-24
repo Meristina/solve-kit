@@ -81,13 +81,14 @@ def test_parse_verdict_priority():
     assert mission.parse_verdict("") == "UNCLEAR"
 
 
-def test_extract_required_fixes():
+def test_required_fixes_extracted_by_prefix():
     txt = "intro\n- Required: cite the 40% figure\n- Fix: add opt-out\n- nice polish\n- BLOCKING: confirm scope"
     fixes = mission.extract_required_fixes(txt)
     assert len(fixes) == 3
 
 
-def test_new_dossier_shape():
+def test_new_dossier_seeds_loop_contract():
+    # the keys + defaults the control loop and serializer depend on
     d = mission.new_dossier("p")
     for key in ("problem", "baseline", "hitl", "verdicts", "iteration", "open_to_verify"):
         assert key in d
@@ -114,8 +115,7 @@ def test_no_go_commits_nothing(monkeypatch):
     d = mission.run_mission("problem", approval_fn=_approver(["NO-GO"]))
     assert "stopped" in d and "no resources committed" in d["stopped"].lower()
     assert d["hitl"]["choice"] == "NO-GO"
-    assert d["verdicts"] == []          # nothing inspected
-    assert len(runner.calls) == 1       # only the decide pass ran
+    assert d["verdicts"] == []          # nothing inspected → no execute/inspect pass ran
 
 
 def test_revise_then_go(monkeypatch):

@@ -8,7 +8,7 @@ fixation and reveal new facets/angles. Shared by Officer 1 (reframe) and Officer
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import STANDARD
 
 CIRCEPT_INSTRUCTIONS = """
 You are a SHARED CIRCEPT soldier. Take a central concept and explore it in the

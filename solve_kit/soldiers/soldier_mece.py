@@ -11,7 +11,7 @@ Elite = heavier model (full gpt-5): logical structuring is hard reasoning.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import ELITE
 
 MECE_INSTRUCTIONS = """
 You are an ELITE, SHARED MECE soldier. Judge and repair the logic of a breakdown:

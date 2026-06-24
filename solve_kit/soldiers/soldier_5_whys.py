@@ -10,7 +10,7 @@ Elite = heavier model (full gpt-5, not mini) because it reasons over causal chai
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import ELITE
 
 FIVE_WHYS_INSTRUCTIONS = """
 You are an ELITE, SHARED 5 Whys soldier. Trace a causal chain from a symptom to

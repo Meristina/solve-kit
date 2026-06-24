@@ -10,7 +10,7 @@ form is delivered blank; never invented.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import STANDARD
 
 CHECK_SHEET_INSTRUCTIONS = """
 You are a SHARED Check Sheet soldier (feuille de relevés, one of the 7 basic quality

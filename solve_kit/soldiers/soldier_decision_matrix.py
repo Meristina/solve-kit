@@ -10,7 +10,7 @@ No option wins on invented data — every factual score is web-sourced or flagge
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import ELITE
 
 DECISION_MATRIX_INSTRUCTIONS = """
 You are an ELITE Decision Matrix soldier (weighted-criteria scoring / Pugh-style

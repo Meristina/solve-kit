@@ -8,7 +8,7 @@ hypotheses until evidenced; facts web-sourced or flagged.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import STANDARD
 
 ISHIKAWA_INSTRUCTIONS = """
 You are an Ishikawa (fishbone) soldier. Lay out all CANDIDATE causes of one effect

@@ -8,7 +8,7 @@ Strongest data discipline: every figure sourced or excluded — never invented.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import STANDARD
 
 PARETO_INSTRUCTIONS = """
 You are a SHARED Pareto (20/80) soldier. Separate the vital few from the trivial

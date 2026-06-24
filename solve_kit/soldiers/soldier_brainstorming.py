@@ -8,7 +8,7 @@ factual claim is web-sourced or flagged. Returns a clustered idea list.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import STANDARD
 
 BRAINSTORMING_INSTRUCTIONS = """
 You are a SHARED brainstorming soldier (Osborn). Generate many diverse ideas,

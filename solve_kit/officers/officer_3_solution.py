@@ -10,7 +10,7 @@ shared-armory payoff of the whole army.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import ELITE
 
 # Shared soldiers reused from the common armory (already built):
 from ..soldiers.soldier_brainstorming import soldier_brainstorming

@@ -9,7 +9,7 @@ any factual claim is web-sourced or flagged. Needs a baseline to act on.
 """
 
 from agents import Agent, WebSearchTool
-from ..models import ELITE, STANDARD
+from ..models import STANDARD
 
 SCAMPER_INSTRUCTIONS = """
 You are a SCAMPER soldier (Eberle/Osborn). Given ONE existing baseline (a current
