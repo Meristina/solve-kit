@@ -69,4 +69,3 @@ criterion is **depth of reasoning**, not method fame.
 ## More
 - **`GUIDE.md`** — full usage manual, the 24-method catalogue, install, and the
   repeatable pattern to add a soldier.
-- **`_ETAT_AVANCEMENT.md`** — durable build log / state of the project.

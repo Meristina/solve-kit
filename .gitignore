@@ -15,3 +15,6 @@ missions/
 build/
 dist/
 *.whl
+
+# Internal local-only build log (never published)
+_ETAT_AVANCEMENT.md

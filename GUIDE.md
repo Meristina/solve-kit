@@ -1,8 +1,7 @@
 # 📖 GUIDE — Armée de Résolution de Problèmes
 
 > Mode d'emploi de l'armée généraliste de résolution de problèmes, **portable
-> Claude + OpenAI**. Pour l'état d'avancement de la construction, voir
-> `_ETAT_AVANCEMENT.md`.
+> Claude + OpenAI**.
 
 ---
 
@@ -54,7 +53,6 @@ chargeant sa skill.
 solve-kit/
 ├─ README.md                   ← présentation + quickstart
 ├─ GUIDE.md                    ← ce fichier
-├─ _ETAT_AVANCEMENT.md         ← état de construction (point d'ancrage)
 ├─ pyproject.toml              ← packaging pip (paquet `solve-kit`)
 ├─ agents/                     ← versions CLAUDE (31 .md)
 │   ├─ commander-problem-solving.md
@@ -160,7 +158,7 @@ partout, donc aucune unité n'invente de faits.
 4. Écrire `solve_kit/soldiers/soldier_<methode>.py` (Agent + WebSearchTool + modèle).
 5. **Câbler chez l'officier OpenAI** : décommenter l'`import` + la ligne `.as_tool()`.
    (Côté Claude, l'officier liste déjà le soldat dans son tableau d'arsenal.)
-6. Mettre à jour `_ETAT_AVANCEMENT.md`.
+6. Mettre à jour tout journal de suivi local (non versionné).
 
 **Contrôle qualité** à chaque ajout :
 `find solve_kit -name '*.py' -print0 | xargs -0 python3 -m py_compile` puis
