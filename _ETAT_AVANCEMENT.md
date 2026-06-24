@@ -138,7 +138,7 @@ Audit only (ne refait pas le travail des officiers).
   inspect). `missions/` gitignoré. Installeur → `/solve.<name>` dans `~/.claude`.
 - ✅ **STAGE B Phase 2 — CLI COMPLÈTE** : paquet `solve_cli/` (cli/scaffolder/
   integrations/runner_bridge) · console-script **`solve`** (init/run/check/version) ·
-  `solve init --agent claude|cursor|copilot` scaffolde `.solve/` + commandes + (claude)
+  `solve init --agent claude|cursor|copilot|gemini|opencode` scaffolde `.solve/` + commandes + (claude)
   agents/skills · `solve run --auto-approve` → `runner_bridge` appelle
   `solve_kit.mission.run_mission(..., auto_approve)` **inchangé** et sérialise le
   dossier en `missions/<NNN>/{dossier,deliverable}.md`. **Tests : 17 OK** (5 CLI).
@@ -154,7 +154,14 @@ Audit only (ne refait pas le travail des officiers).
   **test anti-drift** (Art. IV). Wheel vérifié (75 fichiers payload embarqués) ;
   `solve init` validé en mode **bundled** hors-repo. **20 tests OK.**
 
+- ✅ **Adaptateurs multi-agents** (branche `claude/solve-kit-adapters`, PR #3) :
+  `integrations.py` transcode le pack de commandes (source unique `.solve/commands/`)
+  en formats natifs vérifiés — **claude** (.claude/commands, `solve.<n>.md`), **cursor**
+  (.cursor/commands, MD sans frontmatter), **copilot** (.github/prompts, `*.prompt.md`
+  mode:agent), **gemini** (.gemini/commands/solve/`*.toml`, args `{{args}}`), **opencode**
+  (.opencode/commands). **21 tests OK** (init + transcodage vérifiés pour les 5).
+
 ## ▶️ PROCHAINE ACTION
-🎉 **SOLVE-KIT COMPLET + distribuable** (Stage A + B + CI + bundling PyPI). PR #1
-mergée. Bundling sur branche `claude/solve-kit-bundling` → à merger (PR #2). Piste
-optionnelle restante : étoffer les adaptateurs cursor/copilot (`.mdc` / prompts natifs).
+🎉 **SOLVE-KIT COMPLET, distribuable, multi-agents** (Stage A + B + CI + bundling +
+5 adaptateurs). PR #1 & #2 mergées dans `main`. PR #3 (adaptateurs) ouverte → à merger.
+Plus de piste obligatoire ; le toolkit est livré.

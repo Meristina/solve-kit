@@ -34,12 +34,36 @@ def test_init_claude(tmp_path):
     assert summary["agents"] == 31 and summary["skills"] == 25
 
 
-def test_init_cursor_and_copilot(tmp_path):
-    s1 = scaffolder.init(str(tmp_path / "cur"), agent="cursor")
-    assert len(list((tmp_path / "cur" / ".cursor" / "rules").glob("solve.*.md"))) == 9
-    s2 = scaffolder.init(str(tmp_path / "cop"), agent="copilot")
-    assert len(list((tmp_path / "cop" / ".github" / "prompts").glob("solve.*.md"))) == 9
-    assert s1["agent"] == "cursor" and s2["agent"] == "copilot"
+def test_init_all_agents(tmp_path):
+    expected = {
+        "cursor":   (".cursor/commands", "solve-define.md", 9),
+        "copilot":  (".github/prompts", "solve-define.prompt.md", 9),
+        "gemini":   (".gemini/commands/solve", "define.toml", 9),
+        "opencode": (".opencode/commands", "solve-define.md", 9),
+    }
+    for agent, (subdir, sample, count) in expected.items():
+        proj = tmp_path / agent
+        s = scaffolder.init(str(proj), agent=agent)
+        files = list((proj / subdir).glob("*"))
+        assert len(files) == count, (agent, [f.name for f in files])
+        assert (proj / subdir / sample).is_file(), (agent, sample)
+        assert s["agent"] == agent
+
+
+def test_transcoding_specifics(tmp_path):
+    # cursor: no YAML frontmatter in the body
+    scaffolder.init(str(tmp_path / "cur"), agent="cursor")
+    cur = (tmp_path / "cur" / ".cursor" / "commands" / "solve-define.md").read_text()
+    assert not cur.startswith("---"), "cursor commands must not carry frontmatter"
+    # copilot: agent-mode frontmatter
+    scaffolder.init(str(tmp_path / "cop"), agent="copilot")
+    cop = (tmp_path / "cop" / ".github" / "prompts" / "solve-define.prompt.md").read_text()
+    assert cop.startswith("---") and "mode: agent" in cop
+    # gemini: TOML with description + prompt, args rewritten to {{args}}
+    scaffolder.init(str(tmp_path / "gem"), agent="gemini")
+    gem = (tmp_path / "gem" / ".gemini" / "commands" / "solve" / "define.toml").read_text()
+    assert "description =" in gem and 'prompt = """' in gem
+    assert "$ARGUMENTS" not in gem and "{{args}}" in gem
 
 
 def test_init_rejects_unknown_agent(tmp_path):
