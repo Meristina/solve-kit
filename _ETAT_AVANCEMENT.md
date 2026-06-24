@@ -147,8 +147,14 @@ Audit only (ne refait pas le travail des officiers).
   fichiers, 2 GATE PASS, HITL GO respecté, Inspecteur FINAL = PASS WITH FIXES (a
   attrapé la conformité loi 09-08/CNDP). `missions/` gitignoré.
 
+- ✅ **CI** : `.github/workflows/ci.yml` (compile + pytest, Python 3.10 & 3.12) — verte. Mergée dans `main` (PR #1).
+- ✅ **Bundling PyPI** (branche `claude/solve-kit-bundling`) : payload mirroré sous
+  `solve_cli/payload/` (généré par `solve sync`), `pyproject` package-data +
+  `include-package-data` + `MANIFEST.in`, résolution dev-vs-bundled dans `scaffolder`,
+  **test anti-drift** (Art. IV). Wheel vérifié (75 fichiers payload embarqués) ;
+  `solve init` validé en mode **bundled** hors-repo. **20 tests OK.**
+
 ## ▶️ PROCHAINE ACTION
-🎉 **SOLVE-KIT COMPLET** (Stage A packaging + Stage B Phase 1 commandes + Phase 2 CLI,
-le tout testé). Pistes optionnelles : (1) merger la PR #1 ; (2) bundling `payload` en
-package-data pour distribution PyPI hors-repo ; (3) `.github/workflows/ci.yml` (étapes
-compile+pytest) ; (4) étoffer les adaptateurs cursor/copilot (`.mdc` / prompts).
+🎉 **SOLVE-KIT COMPLET + distribuable** (Stage A + B + CI + bundling PyPI). PR #1
+mergée. Bundling sur branche `claude/solve-kit-bundling` → à merger (PR #2). Piste
+optionnelle restante : étoffer les adaptateurs cursor/copilot (`.mdc` / prompts natifs).

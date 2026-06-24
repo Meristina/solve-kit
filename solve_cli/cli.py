@@ -9,7 +9,7 @@ from . import __version__, scaffolder
 def _cmd_init(args) -> int:
     summary = scaffolder.init(args.path, agent=args.agent)
     print(f"Initialized Solve-Kit in {summary['target']} (agent: {summary['agent']})")
-    print(f"  .solve/ payload : {summary['solve_payload']}")
+    print(f"  payload source : {summary['payload_mode']}")
     if "commands" in summary:
         print(f"  commands       : {summary['commands']} → /solve.<name>")
     for k in ("agents", "skills", "note"):
@@ -28,6 +28,11 @@ def _cmd_run(args) -> int:
         return 2
     print(f"Mission written to: {out}")
     return 0
+
+
+def _cmd_sync(args) -> int:
+    from . import sync_payload
+    return sync_payload.main()
 
 
 def _cmd_check(args) -> int:
@@ -58,6 +63,9 @@ def build_parser() -> argparse.ArgumentParser:
     pc = sub.add_parser("check", help="prerequisite / health check")
     pc.add_argument("path", nargs="?", default=".")
     pc.set_defaults(func=_cmd_check)
+
+    ps = sub.add_parser("sync", help="regenerate the bundled payload from the repo source")
+    ps.set_defaults(func=_cmd_sync)
     return p
 
 
