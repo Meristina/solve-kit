@@ -130,16 +130,16 @@ Audit only (ne refait pas le travail des officiers).
   imports relatifs, `__init__.py`, `main()`), `pyproject.toml` + `requirements.txt`,
   `tests/` (structure + harness e2e stub-SDK, **12 tests OK**), `README.md`, GUIDE/ÉTAT
   maj. Corrige le shadowing `openai/`. Branche `claude/solve-kit-packaging`.
-- 🔨 **STAGE B Phase 1 — MVP spine livré** : `.solve/memory/constitution.md` (10
-  articles) · 4 templates (`dossier`, `problem`, `solution`, `decision-package`) ·
-  `.solve/scripts/sh/new-mission.sh` (testé : crée `missions/<NNN-slug>/` + dossier
-  seedé) · 5 commandes `.solve/commands/` (`mission`, `define`, `design`, `gate`,
-  `inspect`). `missions/` gitignoré (sortie utilisateur). Toutes les refs résolvent.
-- ⏳ **Reste Phase 1** : commandes `frame`, `causes`, `act`, `monitor` + templates
-  `causes`/`actions`/`monitor` + installeur (cp `.solve/commands` → `~/.claude/commands`).
+- ✅ **STAGE B Phase 1 — COMPLET** : `.solve/memory/constitution.md` (10 articles) ·
+  **7 templates** (dossier, problem, causes, solution, decision-package, actions,
+  monitor) · **2 scripts** (`new-mission.sh` testé · `install-claude.sh` testé sur
+  scratch : 9 cmds + 31 agents + 25 skills) · **9 commandes** `.solve/commands/`
+  (mission, frame, define, causes, design, act [refuse sans GO], monitor, gate,
+  inspect). `missions/` gitignoré. Installeur → `/solve.<name>` dans `~/.claude`.
 - ⏳ **STAGE B Phase 2 — CLI** : `solve init/run/check`, `runner_bridge`→`solve_kit.mission`.
 
 ## ▶️ PROCHAINE ACTION
-Vérifier le MVP de bout en bout (lancer `/solve.mission` sur un vrai problème dans
-Claude Code), PUIS compléter Phase 1 (commandes `frame`/`causes`/`act`/`monitor` +
-templates restants + installeur), PUIS Phase 2 (CLI).
+Vérifier le toolkit e2e (installer via `install-claude.sh` puis lancer `/solve.mission`
+sur un vrai problème dans Claude Code — test « live »/HITL), PUIS **Phase 2 (CLI)** :
+`solve init/run/check` + `runner_bridge` qui appelle `solve_kit.mission.run_mission(...,
+auto_approve)` et sérialise le dossier-dict en `missions/<NNN>/*.md`.
