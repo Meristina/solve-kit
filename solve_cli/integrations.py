@@ -18,7 +18,7 @@ Claude also receives the agents+skills engine (the units the commands drive).
 import shutil
 from pathlib import Path
 
-SUPPORTED = ("claude", "cursor", "copilot", "gemini", "opencode")
+SUPPORTED = ("claude", "codex", "cursor", "copilot", "gemini", "opencode")
 
 
 def _parse_command(path: Path):
@@ -64,6 +64,18 @@ def _install_claude(sources, target) -> dict:
             "skills": sum(1 for d in sources["skills"].iterdir() if d.is_dir())}
 
 
+def _install_codex(sources, target) -> dict:
+    # Codex custom prompts use the SAME format as our source (YAML frontmatter with
+    # description/argument-hint + $ARGUMENTS) → near-passthrough copy.
+    n = 0
+    for f in sorted((sources["solve"] / "commands").glob("*.md")):
+        _write(target / ".codex" / "prompts" / f"solve-{f.name}", f.read_text(encoding="utf-8"))
+        n += 1
+    return {"commands": n,
+            "note": "codex: .codex/prompts/solve-*.md → /prompts:solve-<name>. "
+                    "Codex reads ~/.codex/prompts/ (home-scoped): copy them there for global use."}
+
+
 def _install_cursor(sources, target) -> dict:
     n = 0
     for name, _desc, body in _commands(sources):
@@ -106,6 +118,7 @@ def _install_opencode(sources, target) -> dict:
 
 _ADAPTERS = {
     "claude": _install_claude,
+    "codex": _install_codex,
     "cursor": _install_cursor,
     "copilot": _install_copilot,
     "gemini": _install_gemini,

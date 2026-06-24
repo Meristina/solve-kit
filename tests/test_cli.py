@@ -36,6 +36,7 @@ def test_init_claude(tmp_path):
 
 def test_init_all_agents(tmp_path):
     expected = {
+        "codex":    (".codex/prompts", "solve-define.md", 9),
         "cursor":   (".cursor/commands", "solve-define.md", 9),
         "copilot":  (".github/prompts", "solve-define.prompt.md", 9),
         "gemini":   (".gemini/commands/solve", "define.toml", 9),
