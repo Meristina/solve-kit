@@ -10,6 +10,7 @@ factual leaf is web-sourced or flagged.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 TREE_DIAGRAM_INSTRUCTIONS = """
 You are a Tree Diagram soldier (diagramme en arbre / systematic diagram). Take ONE
@@ -46,5 +47,5 @@ soldier_tree_diagram = Agent(
     handoff_description="Breaks a chosen solution into a logical means->ends tree (CONVERGE).",
     instructions=TREE_DIAGRAM_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet to back factual leaves; facts cited
-    model="gpt-5-mini",  # structuring workhorse, light model
+    model=STANDARD,  # structuring workhorse, light model
 )

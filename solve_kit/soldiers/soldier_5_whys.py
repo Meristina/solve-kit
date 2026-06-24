@@ -10,6 +10,7 @@ Elite = heavier model (full gpt-5, not mini) because it reasons over causal chai
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 FIVE_WHYS_INSTRUCTIONS = """
 You are an ELITE, SHARED 5 Whys soldier. Trace a causal chain from a symptom to
@@ -40,5 +41,5 @@ soldier_5_whys = Agent(
     handoff_description="Validated symptom->root-cause chain via 5 Whys (elite, shared).",
     instructions=FIVE_WHYS_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet access — no invented causes
-    model="gpt-5",  # elite: heavier model than the mini soldiers
+    model=ELITE,  # elite: heavier model than the mini soldiers
 )

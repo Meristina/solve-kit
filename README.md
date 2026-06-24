@@ -32,16 +32,30 @@ cp agents/*.md   ~/.claude/agents/
 cp -R skills/*   ~/.claude/skills/
 ```
 
-### OpenAI (Python package)
+### Python runtime (OpenAI by default — any provider via LiteLLM)
 ```bash
 pip install -e .                      # installs the `solve-kit` package
 solve-kit-mission "Describe your problem here"
 # or:
 python -m solve_kit.mission "Describe your problem here"
 ```
-Requires `openai-agents` and `OPENAI_API_KEY`. Every unit has hosted web search, so
-no unit invents facts. The interactive run pauses at the human GO/NO-GO/REVISE gate;
-for headless runs, call `solve_kit.mission.run_mission(problem, approval_fn=auto_approve)`.
+Defaults to OpenAI (`openai-agents` + `OPENAI_API_KEY`). Every unit has hosted web
+search, so no unit invents facts. The interactive run pauses at the human
+GO/NO-GO/REVISE gate; for headless runs, call
+`solve_kit.mission.run_mission(problem, approval_fn=auto_approve)`.
+
+**Choose your models / provider.** The grade→model mapping is env-configurable:
+```bash
+export SOLVE_KIT_ELITE_MODEL=gpt-5            # 🎖️ elite   (default)
+export SOLVE_KIT_STANDARD_MODEL=gpt-5-mini    # 🔵 standard (default)
+```
+For a non-OpenAI provider, install the LiteLLM extra and point at it:
+```bash
+pip install -e ".[litellm]"
+export SOLVE_KIT_ELITE_MODEL="litellm/anthropic/claude-opus-4-20250514"
+export SOLVE_KIT_STANDARD_MODEL="litellm/anthropic/claude-3-5-sonnet-20241022"
+# (or litellm/gemini/…, a local model, etc.) + that provider's API key
+```
 
 ### CLI — scaffold into any project, any agent
 ```bash

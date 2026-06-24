@@ -47,8 +47,10 @@ méthode.
   (les sous-agents ne descendent que d'1 niveau) → pas de switch 🔵/🎖️ *par soldat*.
 - **Codex / cursor / copilot / gemini / opencode** : un **seul modèle de session** pour
   toute la chaîne (ces hôtes ne lisent pas le `model:` par unité) → grades indicatifs.
-- **Port Python** (`solve run`) : modèles **figés par unité** (gpt-5 / gpt-5-mini),
-  appliqués strictement par le SDK (clé API).
+- **Port Python** (`solve run`) : grade→modèle **configurable par env**
+  (`SOLVE_KIT_ELITE_MODEL` / `SOLVE_KIT_STANDARD_MODEL`, défaut `gpt-5` / `gpt-5-mini`),
+  appliqué strictement par le SDK. Provider non-OpenAI (Anthropic, Gemini, local…) via
+  l'extra LiteLLM (`pip install -e ".[litellm]"` + `SOLVE_KIT_*_MODEL=litellm/<provider>/<model>`).
 
 **Délégation :** « le manager garde la main » (agents-as-tools / `.as_tool()`). Sur
 Claude, les sous-agents ne descendent que d'un niveau : la délégation profonde passe

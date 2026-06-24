@@ -12,6 +12,7 @@ reasoning, not plain generation.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 REVERSE_BS_INSTRUCTIONS = """
 You are an ELITE, SHARED reverse-brainstorming soldier. Instead of solving/defining
@@ -42,5 +43,5 @@ soldier_reverse_brainstorming = Agent(
     handoff_description="Inverts the problem to expose risks/solutions (reverse brainstorming, elite).",
     instructions=REVERSE_BS_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet for stimulus; borrowed facts cited
-    model="gpt-5",  # elite: the double inversion is real reasoning
+    model=ELITE,  # elite: the double inversion is real reasoning
 )

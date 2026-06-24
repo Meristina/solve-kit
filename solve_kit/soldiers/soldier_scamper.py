@@ -9,6 +9,7 @@ any factual claim is web-sourced or flagged. Needs a baseline to act on.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 SCAMPER_INSTRUCTIONS = """
 You are a SCAMPER soldier (Eberle/Osborn). Given ONE existing baseline (a current
@@ -46,5 +47,5 @@ soldier_scamper = Agent(
     handoff_description="Transforms an existing baseline into variants via seven SCAMPER lenses.",
     instructions=SCAMPER_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet for Adapt stimulus; borrowed facts cited
-    model="gpt-5-mini",  # divergent workhorse, light model
+    model=STANDARD,  # divergent workhorse, light model
 )

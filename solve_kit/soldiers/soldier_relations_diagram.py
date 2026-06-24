@@ -11,6 +11,7 @@ Elite = heavier model (full gpt-5): reasoning over a causal influence network.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 RELATIONS_INSTRUCTIONS = """
 You are an ELITE relations-diagram soldier (interrelationship digraph). Given a set
@@ -38,5 +39,5 @@ soldier_relations_diagram = Agent(
     handoff_description="Finds driving causes via influence-network analysis (relations diagram, elite).",
     instructions=RELATIONS_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet to evidence influence links
-    model="gpt-5",  # elite: reasoning over a causal network
+    model=ELITE,  # elite: reasoning over a causal network
 )

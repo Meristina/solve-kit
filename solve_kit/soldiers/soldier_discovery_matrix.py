@@ -9,6 +9,7 @@ Cells are candidates, not facts; any factual claim is web-sourced or flagged.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 DISCOVERY_MATRIX_INSTRUCTIONS = """
 You are a Discovery Matrix soldier (matrice de découverte, Abraham Moles). Map the
@@ -44,5 +45,5 @@ soldier_discovery_matrix = Agent(
     handoff_description="Crosses two dimensions in a grid; empty cells reveal untried options.",
     instructions=DISCOVERY_MATRIX_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet to check whether a cell is truly empty; facts cited
-    model="gpt-5-mini",  # divergent workhorse, light model
+    model=STANDARD,  # divergent workhorse, light model
 )

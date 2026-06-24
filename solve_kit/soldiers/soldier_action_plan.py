@@ -10,6 +10,7 @@ nothing invented.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 ACTION_PLAN_INSTRUCTIONS = """
 You are an Action Plan soldier. Convert a chosen solution into a concrete list of
@@ -51,5 +52,5 @@ soldier_action_plan = Agent(
     handoff_description="Turns a chosen solution into an owned, testable action list (PLAN).",
     instructions=ACTION_PLAN_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet to back dates/costs; figures cited or flagged
-    model="gpt-5-mini",  # structuring workhorse, light model
+    model=STANDARD,  # structuring workhorse, light model
 )

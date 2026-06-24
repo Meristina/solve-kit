@@ -9,6 +9,7 @@ themes to Officer 1.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 AFFINITY_INSTRUCTIONS = """
 You are an affinity-diagram (KJ) soldier. Turn a scattered pile of items into a
@@ -35,5 +36,5 @@ soldier_affinity_diagram = Agent(
     handoff_description="Clusters scattered items into emergent themes (affinity/KJ).",
     instructions=AFFINITY_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet for any factual item
-    model="gpt-5-mini",  # organizing workhorse, light model
+    model=STANDARD,  # organizing workhorse, light model
 )

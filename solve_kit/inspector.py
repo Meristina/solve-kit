@@ -10,6 +10,7 @@ and re-inspects after fixes. Audit only — it never authors the fix itself.
 """
 
 from agents import Agent, WebSearchTool
+from .models import ELITE, STANDARD
 
 INSPECTOR_INSTRUCTIONS = """
 You are the INSPECTOR: a single elite unit outside the phase chain that guards what
@@ -66,6 +67,6 @@ inspector = Agent(
     name="inspector",
     handoff_description="End-of-loop quality gate: sources, compliance, devil's-advocate quality — veto power.",
     instructions=INSPECTOR_INSTRUCTIONS,
-    model="gpt-5",  # elite: adversarial verification and source-checking is the hardest reasoning
+    model=ELITE,  # elite: adversarial verification and source-checking is the hardest reasoning
     tools=[WebSearchTool()],  # internet to verify every factual claim it audits
 )

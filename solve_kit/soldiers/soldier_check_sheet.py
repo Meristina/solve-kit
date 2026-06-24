@@ -10,6 +10,7 @@ form is delivered blank; never invented.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 CHECK_SHEET_INSTRUCTIONS = """
 You are a SHARED Check Sheet soldier (feuille de relevés, one of the 7 basic quality
@@ -58,5 +59,5 @@ soldier_check_sheet = Agent(
     handoff_description="Designs a structured data-collection form and tallies real readings (no fabrication).",
     instructions=CHECK_SHEET_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet to source observations where available; gaps flagged
-    model="gpt-5-mini",  # structuring workhorse, light model
+    model=STANDARD,  # structuring workhorse, light model
 )

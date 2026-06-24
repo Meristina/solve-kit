@@ -10,6 +10,7 @@ shared-armory payoff of the whole army.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 # Shared soldiers reused from the common armory (already built):
 from ..soldiers.soldier_brainstorming import soldier_brainstorming
@@ -55,7 +56,7 @@ officer_3 = Agent(
     name="officer_3_solution",
     handoff_description="Phase 3 specialist: generates, compares, and chooses a solution.",
     instructions=OFFICER_3_INSTRUCTIONS,
-    model="gpt-5",  # elite tier — mirror of opus on the Claude side
+    model=ELITE,  # elite tier — mirror of opus on the Claude side
     tools=[
         WebSearchTool(),  # internet access for every unit
         # New Phase-3 soldiers — diverge then converge:

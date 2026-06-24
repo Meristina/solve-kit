@@ -10,6 +10,7 @@ never invented.
 """
 
 from agents import Agent, WebSearchTool
+from ..models import ELITE, STANDARD
 
 DASHBOARD_INSTRUCTIONS = """
 You are a SHARED Dashboard soldier (tableau de bord de pilotage). Define a small set
@@ -57,5 +58,5 @@ soldier_dashboard = Agent(
     handoff_description="Defines the vital-few KPIs with targets/thresholds and shows status vs target.",
     instructions=DASHBOARD_INSTRUCTIONS,
     tools=[WebSearchTool()],  # internet to back current readings; values cited or flagged
-    model="gpt-5-mini",  # structuring workhorse, light model
+    model=STANDARD,  # structuring workhorse, light model
 )
