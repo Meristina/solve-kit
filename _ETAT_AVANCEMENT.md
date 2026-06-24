@@ -130,13 +130,16 @@ Audit only (ne refait pas le travail des officiers).
   imports relatifs, `__init__.py`, `main()`), `pyproject.toml` + `requirements.txt`,
   `tests/` (structure + harness e2e stub-SDK, **12 tests OK**), `README.md`, GUIDE/ÉTAT
   maj. Corrige le shadowing `openai/`. Branche `claude/solve-kit-packaging`.
-- ⏳ **STAGE B — bâtir le toolkit** : `.solve/` (constitution 10 articles + 7 templates
-  + 9 commandes `/solve.*` + scripts), artefacts `missions/<NNN>/`. **Phase 1 = pack
-  Claude (MVP : spine mission→define→design→HITL→inspect)** puis **Phase 2 = CLI**
-  (`solve init/run`, `runner_bridge`→`solve_kit.mission`).
+- 🔨 **STAGE B Phase 1 — MVP spine livré** : `.solve/memory/constitution.md` (10
+  articles) · 4 templates (`dossier`, `problem`, `solution`, `decision-package`) ·
+  `.solve/scripts/sh/new-mission.sh` (testé : crée `missions/<NNN-slug>/` + dossier
+  seedé) · 5 commandes `.solve/commands/` (`mission`, `define`, `design`, `gate`,
+  `inspect`). `missions/` gitignoré (sortie utilisateur). Toutes les refs résolvent.
+- ⏳ **Reste Phase 1** : commandes `frame`, `causes`, `act`, `monitor` + templates
+  `causes`/`actions`/`monitor` + installeur (cp `.solve/commands` → `~/.claude/commands`).
+- ⏳ **STAGE B Phase 2 — CLI** : `solve init/run/check`, `runner_bridge`→`solve_kit.mission`.
 
 ## ▶️ PROCHAINE ACTION
-Commit + push de Stage A (branche `claude/solve-kit-packaging`) → ouvrir la PR, PUIS
-démarrer **STAGE B Phase 1** : `.solve/memory/constitution.md` + 3 templates porteurs
-(`dossier`, `problem`, `solution`) + `new-mission.sh` + la colonne de commandes
-`/solve.mission .define .design .gate .inspect` (MVP run réel jusqu'au go/no-go).
+Vérifier le MVP de bout en bout (lancer `/solve.mission` sur un vrai problème dans
+Claude Code), PUIS compléter Phase 1 (commandes `frame`/`causes`/`act`/`monitor` +
+templates restants + installeur), PUIS Phase 2 (CLI).
