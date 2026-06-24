@@ -10,3 +10,8 @@ venv/
 
 # Solve-Kit mission outputs (user data)
 missions/
+
+# Build artifacts
+build/
+dist/
+*.whl

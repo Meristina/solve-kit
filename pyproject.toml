@@ -18,5 +18,12 @@ dev = ["pytest"]
 solve = "solve_cli.cli:main"
 solve-kit-mission = "solve_kit.mission:main"
 
+[tool.setuptools]
+include-package-data = true
+
 [tool.setuptools.packages.find]
 include = ["solve_kit*", "solve_cli*"]
+
+[tool.setuptools.package-data]
+# Ship the bundled payload (toolkit + Claude mirror) so `solve init` works from a wheel.
+solve_cli = ["payload/**/*"]

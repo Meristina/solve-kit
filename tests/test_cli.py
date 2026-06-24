@@ -4,7 +4,23 @@ and is covered structurally by test_mission_harness.py."""
 
 from pathlib import Path
 
-from solve_cli import scaffolder, integrations, runner_bridge
+import filecmp
+
+from solve_cli import scaffolder, integrations, runner_bridge, sync_payload
+from solve_cli import cli
+
+
+def test_cli_main_init(tmp_path, capsys):
+    """Exercise the full CLI layer (argparse + _cmd_init print path), not just scaffolder."""
+    rc = cli.main(["init", str(tmp_path), "--agent", "claude"])
+    assert rc == 0
+    out = capsys.readouterr().out
+    assert "Initialized Solve-Kit" in out and "payload source" in out
+    assert (tmp_path / ".claude" / "commands").is_dir()
+
+
+def test_cli_main_check(tmp_path):
+    assert cli.main(["check", str(tmp_path)]) in (0, 1)  # returns status, shouldn't raise
 
 
 def test_init_claude(tmp_path):
@@ -28,10 +44,27 @@ def test_init_cursor_and_copilot(tmp_path):
 
 def test_init_rejects_unknown_agent(tmp_path):
     try:
-        integrations.install("notanagent", scaffolder.repo_root(), tmp_path)
+        integrations.install("notanagent", scaffolder.sources(), tmp_path)
     except ValueError:
         return
     assert False, "expected ValueError for unknown agent"
+
+
+def test_bundled_payload_in_sync():
+    """Drift guard (Constitution Art. IV): the bundled payload must byte-match the
+    root source of truth. If this fails, run `solve sync` and commit."""
+    root = sync_payload.repo_root()
+    payload = sync_payload.payload_dir()
+    for src_name, bundle_name in sync_payload.MAP:
+        src, dst = root / src_name, payload / bundle_name
+        assert dst.is_dir(), f"bundled {bundle_name} missing — run `solve sync`"
+        cmp = filecmp.dircmp(src, dst)
+        drift = cmp.left_only + cmp.right_only + cmp.diff_files
+        # recurse one level for subdirs (skills/*/, .solve/*/)
+        for sub in cmp.common_dirs:
+            sc = filecmp.dircmp(src / sub, dst / sub)
+            drift += [f"{sub}/{x}" for x in sc.left_only + sc.right_only + sc.diff_files]
+        assert not drift, f"payload drift in {bundle_name}: {drift} — run `solve sync`"
 
 
 def test_serialize_dossier(tmp_path):
